@@ -15,6 +15,24 @@ public class Main {
         turmaED.add(new Aluno(333033, "João", "D"));
         turmaED.add(new Aluno(222022, "Ana", "E"));
 
-        turmaBD.forEach(aluno -> System.out.println(aluno));
+        //LISTAGEM DE TODOS OS ALUNOS MATRICULAS
+        Set<Aluno> uniao = new HashSet<>(turmaBD);
+        uniao.addAll(turmaED);
+        uniao.forEach(aluno -> System.out.println(aluno));
+
+        //LISTAGEM DOS ALUNOS MATRICULAS SOMENTE EM BANCO DE DADOS
+        System.out.println("\nLista dos alunos matriculados no banco de dados");
+        Set<Aluno> soBanco = new HashSet<>(turmaBD);
+        soBanco.removeAll(turmaED);
+        soBanco.forEach(aluno -> System.out.println(aluno));
+
+        //LISTAGEM DOS ALUNOS MATRICULAS SOMENTE EM BANCO DE DADOS E ESTRUTURA DE DADOS
+        System.out.println("\n Lista dos alunos matriculados em banco de dados e estrutura de dados");
+        Set<Aluno> ambos = new HashSet<>(turmaBD);
+        ambos.retainAll(turmaED);
+//        ambos.forEach(aluno -> System.out.println(aluno));
+        ambos.forEach(System.out::println);
+
+//        turmaBD.forEach(aluno -> System.out.println(aluno));
     }
 }
